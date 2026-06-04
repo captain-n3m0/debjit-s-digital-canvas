@@ -4,19 +4,28 @@ import Services from "@/components/portfolio/Services";
 import Projects from "@/components/portfolio/Projects";
 import Contact from "@/components/portfolio/Contact";
 import Footer from "@/components/portfolio/Footer";
+import SmoothScroll from "@/components/portfolio/SmoothScroll";
+import CustomCursor from "@/components/portfolio/CustomCursor";
+import ShaderBackground from "@/components/portfolio/ShaderBackground";
+import Marquee from "@/components/portfolio/Marquee";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <main>
-        <Hero />
-        <Services />
-        <Projects />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <SmoothScroll>
+      <div className="relative min-h-screen bg-background">
+        <ShaderBackground />
+        <CustomCursor />
+        <Navbar />
+        <main>
+          <Hero />
+          <Marquee />
+          <Services />
+          <Projects />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </SmoothScroll>
   );
 };
 
