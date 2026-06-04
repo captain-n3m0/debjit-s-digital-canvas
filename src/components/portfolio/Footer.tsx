@@ -13,7 +13,7 @@ const Footer = () => {
         </p>
 
         <p className="text-sm text-muted-foreground">
-          Web Designer & Developer
+          Cybersecurity Engineer & Ethical Hacker
         </p>
       </div>
     </footer>
