@@ -54,14 +54,16 @@ const CustomCursor = () => {
     window.addEventListener("mousemove", onMove);
     window.addEventListener("mouseover", onOver);
     document.documentElement.classList.add("custom-cursor-active");
-    document.body.style.cursor = "none";
+    document.documentElement.style.setProperty("cursor", "none", "important");
+    document.body.style.setProperty("cursor", "none", "important");
 
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("mouseover", onOver);
       document.documentElement.classList.remove("custom-cursor-active");
-      document.body.style.cursor = "";
+      document.documentElement.style.removeProperty("cursor");
+      document.body.style.removeProperty("cursor");
     };
   }, [enabled]);
 

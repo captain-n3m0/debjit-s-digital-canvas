@@ -98,8 +98,16 @@
     overflow-wrap: anywhere;
   }
 
-  .custom-cursor-active,
-  .custom-cursor-active * {
+  html.custom-cursor-active,
+  html.custom-cursor-active body,
+  html.custom-cursor-active body *,
+  html.custom-cursor-active a,
+  html.custom-cursor-active button,
+  html.custom-cursor-active [role="button"],
+  html.custom-cursor-active input,
+  html.custom-cursor-active textarea,
+  html.custom-cursor-active select,
+  html.custom-cursor-active summary {
     cursor: none !important;
   }
 
