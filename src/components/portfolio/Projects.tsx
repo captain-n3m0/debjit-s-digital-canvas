@@ -38,10 +38,10 @@ const Projects = () => {
         {/* Section Header */}
         <div className="mb-16">
           <p className="text-muted-foreground text-sm uppercase tracking-widest mb-4 animate-fade-in">
-            Featured Work
+            Highlights
           </p>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground animate-fade-in" style={{ animationDelay: "0.1s" }}>
-            Projects
+            Achievements & Research
           </h2>
         </div>
 
