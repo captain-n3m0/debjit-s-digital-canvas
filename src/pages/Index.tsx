@@ -12,7 +12,7 @@ import Marquee from "@/components/portfolio/Marquee";
 const Index = () => {
   return (
     <SmoothScroll>
-      <div className="relative min-h-screen bg-background">
+      <div className="relative min-h-screen">
         <ShaderBackground />
         <CustomCursor />
         <Navbar />
