@@ -30,21 +30,21 @@ const Contact = () => {
 
   return (
     <section id="contact" className="section-anchor section-padding bg-card/70 backdrop-blur-md relative">
-      <div className="max-w-7xl mx-auto">
+      <div className="content-shell">
         {/* Section Header */}
-        <div className="mb-16">
+        <div className="mb-12 sm:mb-16">
           <p className="text-muted-foreground text-sm uppercase tracking-widest mb-4 animate-fade-in">
             Get In Touch
           </p>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground animate-fade-in" style={{ animationDelay: "0.1s" }}>
+          <h2 className="section-heading animate-fade-in" style={{ animationDelay: "0.1s" }}>
             Let's Work Together
           </h2>
         </div>
 
         {/* Contact Info */}
-        <div className="grid md:grid-cols-2 gap-12 items-start">
+        <div className="grid gap-10 md:grid-cols-2 md:gap-12 items-start">
           <div className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            <p className="text-xl text-muted-foreground leading-relaxed mb-4">
+            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-4">
               Open to security research collaborations, bug bounty engagements, and
               cybersecurity opportunities. Based in Kolkata, India.
             </p>
@@ -58,11 +58,11 @@ const Contact = () => {
                 href={item.href}
                 target={item.href.startsWith("http") ? "_blank" : undefined}
                 rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="group flex items-start justify-between gap-4 p-5 sm:p-6 bg-background border border-border rounded-lg hover:border-muted-foreground/30 transition-all duration-300 hover-lift animate-fade-in"
+                className="group flex items-start justify-between gap-3 p-4 min-[380px]:gap-4 sm:p-6 bg-background border border-border rounded-lg hover:border-muted-foreground/30 transition-all duration-300 hover-lift animate-fade-in"
                 style={{ animationDelay: `${0.3 + i * 0.05}s` }}
               >
                 <div className="flex min-w-0 items-start gap-4">
-                  <div className="w-12 h-12 shrink-0 rounded-full bg-secondary flex items-center justify-center">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 shrink-0 rounded-full bg-secondary flex items-center justify-center">
                     <item.icon size={20} className="text-muted-foreground" />
                   </div>
                   <div className="min-w-0">

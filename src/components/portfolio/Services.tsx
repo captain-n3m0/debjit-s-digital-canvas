@@ -66,9 +66,9 @@ const Services = () => {
 
   return (
     <section id="services" className="section-anchor section-padding bg-card/70 backdrop-blur-md relative">
-      <div className="max-w-7xl mx-auto">
+      <div className="content-shell">
         {/* Section Header */}
-        <div className="mb-16">
+        <div className="mb-12 sm:mb-16">
           <p className="text-muted-foreground text-sm uppercase tracking-widest mb-4 animate-fade-in">
             What I Do
           </p>
@@ -76,7 +76,7 @@ const Services = () => {
             as="h2"
             type="words"
             stagger={0.08}
-            className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-foreground"
+            className="section-heading"
           >
             Services & Capabilities
           </SplitReveal>
@@ -91,7 +91,7 @@ const Services = () => {
                 key={service.title}
                 data-service-card
                 data-cursor="hover"
-                className="group relative grid gap-5 border-b border-border/70 pb-6 transition-colors duration-300 last:border-b-0 md:grid-cols-[80px_minmax(0,0.9fr)_minmax(220px,0.55fr)] md:items-start md:gap-8 md:pl-0"
+                className="group relative grid gap-4 border-b border-border/70 pb-6 transition-colors duration-300 last:border-b-0 sm:gap-5 md:grid-cols-[72px_minmax(0,0.9fr)_minmax(180px,0.55fr)] md:items-start md:gap-8 md:pl-0 lg:grid-cols-[80px_minmax(0,0.9fr)_minmax(220px,0.55fr)]"
               >
                 <div className="relative flex items-center gap-4 md:block">
                   <div className="flex h-12 w-12 items-center justify-center rounded-full border border-border bg-background transition-colors duration-300 group-hover:border-muted-foreground/50 group-hover:bg-card">
@@ -106,7 +106,7 @@ const Services = () => {
                 </div>
 
                 <div className="min-w-0">
-                  <h3 className="font-display text-2xl md:text-3xl font-semibold text-foreground transition-colors duration-300 group-hover:text-muted-foreground">
+                  <h3 className="font-display text-xl sm:text-2xl md:text-3xl font-semibold text-foreground transition-colors duration-300 group-hover:text-muted-foreground">
                     {service.title}
                   </h3>
                   <p className="mt-3 max-w-2xl text-sm md:text-base text-muted-foreground leading-relaxed">

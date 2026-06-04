@@ -13,8 +13,8 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
-        <div className="flex items-center justify-between h-20">
+      <div className="content-shell px-5 sm:px-6 md:px-10 lg:px-16 xl:px-24">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
           <a href="#home" className="font-display text-2xl font-bold text-foreground">
             DN<span className="text-muted-foreground">.</span>
@@ -36,7 +36,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-foreground"
+            className="md:hidden p-2 -mr-2 text-foreground"
             aria-label="Toggle menu"
             aria-expanded={isOpen}
             aria-controls="mobile-navigation"
@@ -47,7 +47,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div id="mobile-navigation" className="md:hidden pb-6 animate-fade-in">
+          <div id="mobile-navigation" className="md:hidden pb-5 animate-fade-in">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a

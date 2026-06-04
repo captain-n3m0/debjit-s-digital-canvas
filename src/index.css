@@ -85,11 +85,17 @@
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 6rem;
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Space Grotesk', sans-serif;
+    overflow-x: hidden;
+  }
+
+  p, a, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: anywhere;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -113,11 +119,19 @@
   }
 
   .section-padding {
-    @apply px-6 py-20 md:px-12 lg:px-24 lg:py-32;
+    @apply px-5 py-16 sm:px-6 sm:py-20 md:px-10 md:py-24 lg:px-16 lg:py-28 xl:px-24 xl:py-32;
   }
 
   .section-anchor {
     @apply scroll-mt-24;
+  }
+
+  .section-heading {
+    @apply font-display text-4xl font-bold leading-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl;
+  }
+
+  .content-shell {
+    @apply mx-auto w-full max-w-7xl;
   }
 
   .marquee-track {

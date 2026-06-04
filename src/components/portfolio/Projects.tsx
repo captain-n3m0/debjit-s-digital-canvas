@@ -64,6 +64,7 @@ const Projects = () => {
     const ctx = gsap.context(() => {
       const rows = gsap.utils.toArray<HTMLElement>("[data-project-row]");
       const rowContent = gsap.utils.toArray<HTMLElement>("[data-project-content]");
+      const isSmallScreen = window.matchMedia("(max-width: 767px)").matches;
 
       const activateRow = (activeIndex: number) => {
         rows.forEach((row, index) => {
@@ -91,31 +92,33 @@ const Projects = () => {
         });
       });
 
-      rowContent.forEach((content, index) => {
-        gsap.fromTo(
-          content,
-          { y: index % 2 === 0 ? 24 : 16 },
-          {
-            y: index % 2 === 0 ? -24 : -16,
-            ease: "none",
-            scrollTrigger: {
-              trigger: rows[index],
-              start: "top bottom",
-              end: "bottom top",
-              scrub: true,
-            },
-          }
-        );
-      });
+      if (!isSmallScreen) {
+        rowContent.forEach((content, index) => {
+          gsap.fromTo(
+            content,
+            { y: index % 2 === 0 ? 24 : 16 },
+            {
+              y: index % 2 === 0 ? -24 : -16,
+              ease: "none",
+              scrollTrigger: {
+                trigger: rows[index],
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true,
+              },
+            }
+          );
+        });
+      }
     }, listRef);
     return () => ctx.revert();
   }, []);
 
   return (
     <section id="projects" className="section-anchor section-padding pb-28 md:pb-36">
-      <div className="max-w-7xl mx-auto">
+      <div className="content-shell">
         {/* Section Header */}
-        <div className="mb-16">
+        <div className="mb-12 sm:mb-16">
           <p className="text-muted-foreground text-sm uppercase tracking-widest mb-4 animate-fade-in">
             Highlights
           </p>
@@ -123,7 +126,7 @@ const Projects = () => {
             as="h2"
             type="words"
             stagger={0.08}
-            className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-foreground"
+            className="section-heading"
           >
             Achievements & Research
           </SplitReveal>
@@ -140,21 +143,21 @@ const Projects = () => {
               data-project-row
               data-active={index === 0}
               data-cursor="hover"
-              className={`group block rounded-lg border border-border/80 px-5 py-8 transition-all duration-300 data-[active=true]:border-muted-foreground/35 data-[active=true]:bg-card/85 data-[active=true]:shadow-[0_24px_90px_rgba(74,222,128,0.08)] sm:px-6 md:py-10 ${
+              className={`group block rounded-lg border border-border/80 px-4 py-7 transition-all duration-300 data-[active=true]:border-muted-foreground/35 data-[active=true]:bg-card/85 data-[active=true]:shadow-[0_24px_90px_rgba(74,222,128,0.08)] min-[380px]:px-5 sm:px-6 md:py-10 ${
                 project.research ? "bg-card/45" : "bg-background/20"
               }`}
             >
               <div
                 data-project-content
-                className="flex flex-col md:flex-row md:items-start justify-between gap-6 md:gap-10"
+                className="flex flex-col md:flex-row md:items-start justify-between gap-5 md:gap-10"
               >
-                <div className="flex min-w-0 items-start gap-5 md:gap-12">
+                <div className="flex min-w-0 items-start gap-4 sm:gap-5 md:gap-12">
                   <span className="text-muted-foreground/90 text-sm font-mono group-data-[active=true]:text-foreground">
                     {project.number}
                   </span>
                   <div className="min-w-0">
                     {project.research && (
-                      <div className="mb-4 flex flex-wrap items-center gap-3 text-xs uppercase tracking-widest text-muted-foreground/90 group-data-[active=true]:text-muted-foreground">
+                      <div className="mb-4 flex flex-wrap items-center gap-2 sm:gap-3 text-[10px] sm:text-xs uppercase tracking-widest text-muted-foreground/90 group-data-[active=true]:text-muted-foreground">
                         <span className="inline-flex items-center gap-2">
                           <FileText size={16} />
                           Published Research
@@ -162,7 +165,7 @@ const Projects = () => {
                         <span>{researchPaper.published}</span>
                       </div>
                     )}
-                    <h3 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-foreground/80 transition-colors duration-300 group-hover:text-foreground group-data-[active=true]:text-foreground">
+                    <h3 className="font-display text-xl min-[380px]:text-2xl md:text-3xl lg:text-4xl font-bold text-foreground/80 transition-colors duration-300 group-hover:text-foreground group-data-[active=true]:text-foreground">
                       {project.title}
                     </h3>
                     <p className="text-muted-foreground text-sm mt-1 md:hidden">
@@ -187,8 +190,8 @@ const Projects = () => {
                   </div>
                 </div>
 
-                <div className="flex shrink-0 items-center justify-between gap-6 pl-10 md:pl-0 md:pt-2 md:justify-end">
-                  <span className="hidden md:block text-muted-foreground/85 text-sm text-right group-data-[active=true]:text-muted-foreground">
+                <div className="flex shrink-0 items-center justify-between gap-5 pl-8 sm:pl-10 md:pl-0 md:pt-2 md:justify-end">
+                  <span className="hidden max-w-56 break-words md:block text-muted-foreground/85 text-sm text-right group-data-[active=true]:text-muted-foreground">
                     {project.research ? `DOI ${researchPaper.doi}` : project.category}
                   </span>
                   <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center group-hover:bg-foreground group-hover:border-foreground group-data-[active=true]:border-muted-foreground/60 transition-all duration-300">
