@@ -1,4 +1,10 @@
 import { ShieldCheck, Bug, Network, Code2, FileSearch, Lock, BookOpen } from "lucide-react";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SplitReveal from "./SplitReveal";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Services = () => {
   const services = [
@@ -39,26 +45,52 @@ const Services = () => {
     },
   ];
 
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const cards = gsap.utils.toArray<HTMLElement>("[data-service-card]");
+      gsap.from(cards, {
+        y: 80,
+        opacity: 0,
+        duration: 0.9,
+        ease: "expo.out",
+        stagger: 0.08,
+        scrollTrigger: {
+          trigger: gridRef.current,
+          start: "top 80%",
+        },
+      });
+    }, gridRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="services" className="section-padding bg-card">
+    <section id="services" className="section-padding bg-card/70 backdrop-blur-md relative">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="mb-16">
           <p className="text-muted-foreground text-sm uppercase tracking-widest mb-4 animate-fade-in">
             What I Do
           </p>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground animate-fade-in" style={{ animationDelay: "0.1s" }}>
-            Services
-          </h2>
+          <SplitReveal
+            as="h2"
+            type="words"
+            stagger={0.08}
+            className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-foreground"
+          >
+            Services & Capabilities
+          </SplitReveal>
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div ref={gridRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="group p-8 bg-background border border-border rounded-lg hover-lift hover:border-muted-foreground/30 transition-all duration-300 animate-fade-in"
-              style={{ animationDelay: `${0.1 + index * 0.05}s` }}
+              data-service-card
+              data-cursor="hover"
+              className="group p-8 bg-background border border-border rounded-lg hover-lift hover:border-muted-foreground/30 transition-all duration-300"
             >
               <service.icon
                 size={32}

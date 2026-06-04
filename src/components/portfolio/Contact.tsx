@@ -29,7 +29,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="section-padding bg-card">
+    <section id="contact" className="section-padding bg-card/70 backdrop-blur-md relative">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="mb-16">

@@ -1,4 +1,10 @@
 import { ArrowUpRight } from "lucide-react";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SplitReveal from "./SplitReveal";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Projects = () => {
   const projects = [
@@ -32,6 +38,22 @@ const Projects = () => {
     },
   ];
 
+  const listRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from("[data-project-row]", {
+        y: 60,
+        opacity: 0,
+        duration: 0.9,
+        ease: "expo.out",
+        stagger: 0.1,
+        scrollTrigger: { trigger: listRef.current, start: "top 80%" },
+      });
+    }, listRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section id="projects" className="section-padding">
       <div className="max-w-7xl mx-auto">
@@ -40,21 +62,27 @@ const Projects = () => {
           <p className="text-muted-foreground text-sm uppercase tracking-widest mb-4 animate-fade-in">
             Highlights
           </p>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground animate-fade-in" style={{ animationDelay: "0.1s" }}>
+          <SplitReveal
+            as="h2"
+            type="words"
+            stagger={0.08}
+            className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-foreground"
+          >
             Achievements & Research
-          </h2>
+          </SplitReveal>
         </div>
 
         {/* Projects List */}
-        <div className="space-y-0">
+        <div ref={listRef} className="space-y-0">
           {projects.map((project, index) => (
             <a
               key={project.title}
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block border-t border-border py-8 md:py-12 hover:bg-card/50 transition-all duration-300 -mx-6 px-6 animate-fade-in"
-              style={{ animationDelay: `${0.1 + index * 0.1}s` }}
+              data-project-row
+              data-cursor="hover"
+              className="group block border-t border-border py-8 md:py-12 hover:bg-card/50 transition-all duration-300 -mx-6 px-6"
             >
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div className="flex items-start md:items-center gap-6 md:gap-12">
