@@ -2,8 +2,8 @@ import { ArrowDown } from "lucide-react";
 
 const Hero = () => {
   const stats = [
-    { value: "1+", label: "Years of Experience" },
-    { value: "10+", label: "Projects Completed" },
+    { value: "P2", label: "Bug Bounty (EPAM)" },
+    { value: "4+", label: "HTB Pro Lab Certs" },
   ];
 
   return (
@@ -28,9 +28,10 @@ const Hero = () => {
         <div className="grid md:grid-cols-2 gap-12 items-end mb-16">
           <div className="animate-fade-in" style={{ animationDelay: "0.3s" }}>
             <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
-              Web Designer & Developer crafting beautiful digital experiences with{" "}
-              <span className="text-foreground">Next.js</span>,{" "}
-              <span className="text-foreground">React.js</span>, and modern web technologies.
+              Cybersecurity Engineer & Ethical Hacker focused on{" "}
+              <span className="text-foreground">Application Security</span>,{" "}
+              <span className="text-foreground">API Security</span>, and{" "}
+              <span className="text-foreground">Network Security</span>.
             </p>
           </div>
 
