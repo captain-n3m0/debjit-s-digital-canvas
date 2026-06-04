@@ -1,41 +1,41 @@
-import { Paintbrush, Code, Layout, Smartphone, Layers, FileCode, Monitor } from "lucide-react";
+import { ShieldCheck, Bug, Network, Code2, FileSearch, Lock, BookOpen } from "lucide-react";
 
 const Services = () => {
   const services = [
     {
-      icon: Paintbrush,
-      title: "Web Design",
-      description: "Creating visually stunning and user-centric website designs that captivate audiences.",
+      icon: ShieldCheck,
+      title: "Application Security",
+      description: "Web application security assessments aligned with OWASP Top 10 and secure coding best practices.",
     },
     {
-      icon: Code,
-      title: "Web Development",
-      description: "Building robust, scalable web applications with clean and maintainable code.",
+      icon: Code2,
+      title: "API Security",
+      description: "API penetration testing and threat modeling for REST APIs, covering auth, access control, and data exposure.",
     },
     {
-      icon: Layout,
-      title: "UI/UX Design",
-      description: "Designing intuitive interfaces and seamless user experiences that drive engagement.",
+      icon: Network,
+      title: "Network Security",
+      description: "Reconnaissance, enumeration, and network-level vulnerability assessment using Nmap, Wireshark, and Burp Suite.",
     },
     {
-      icon: Smartphone,
-      title: "Frontend Development",
-      description: "Crafting responsive and interactive frontend experiences with modern technologies.",
+      icon: Bug,
+      title: "Vulnerability Research",
+      description: "Bug bounty and vulnerability research with reproducible PoCs, impact analysis, and responsible disclosure.",
     },
     {
-      icon: Layers,
-      title: "React/Next.js Development",
-      description: "Specialized development using React and Next.js for high-performance applications.",
+      icon: FileSearch,
+      title: "Threat Analysis & Triage",
+      description: "Risk assessment, threat analysis, and incident response support with clear, business-aware triage reports.",
     },
     {
-      icon: FileCode,
-      title: "Figma to Code",
-      description: "Pixel-perfect conversion of Figma designs into fully functional web applications.",
+      icon: Lock,
+      title: "Secure Coding & Review",
+      description: "Secure code review and remediation guidance grounded in Linux Foundation LFD121 and ISO/IEC 27001 principles.",
     },
     {
-      icon: Monitor,
-      title: "Responsive Design",
-      description: "Ensuring your website looks and works flawlessly across all devices and screen sizes.",
+      icon: BookOpen,
+      title: "Security Research & Writing",
+      description: "Technical literature review, peer-reviewed publication work, and structured security documentation.",
     },
   ];
 
