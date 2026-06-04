@@ -1,5 +1,5 @@
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useMemo, useRef } from "react";
+import { Component, ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 
 const fragmentShader = /* glsl */ `
@@ -98,17 +98,75 @@ const ShaderPlane = () => {
   );
 };
 
+class CanvasErrorBoundary extends Component<
+  { children: ReactNode; fallback: ReactNode },
+  { hasError: boolean }
+> {
+  state = { hasError: false };
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  render() {
+    return this.state.hasError ? this.props.fallback : this.props.children;
+  }
+}
+
+const supportsWebGL = () => {
+  try {
+    const canvas = document.createElement("canvas");
+    return Boolean(
+      window.WebGLRenderingContext &&
+        (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
+    );
+  } catch {
+    return false;
+  }
+};
+
+const FallbackBackground = () => (
+  <div className="absolute inset-0 bg-background">
+    <div
+      className="absolute inset-0 opacity-40"
+      style={{
+        background:
+          "linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--card)) 48%, hsl(var(--background)) 100%)",
+      }}
+    />
+    <div
+      className="absolute inset-0 opacity-20"
+      style={{
+        backgroundImage: "linear-gradient(rgba(120, 255, 170, 0.18) 1px, transparent 1px)",
+        backgroundSize: "100% 16px",
+      }}
+    />
+  </div>
+);
+
 const ShaderBackground = () => {
+  const [canRenderCanvas, setCanRenderCanvas] = useState(false);
+
+  useEffect(() => {
+    setCanRenderCanvas(supportsWebGL());
+  }, []);
+
   return (
     <div className="fixed inset-0 -z-10 pointer-events-none">
-      <Canvas
-        orthographic
-        camera={{ position: [0, 0, 1], zoom: 1 }}
-        gl={{ antialias: false, powerPreference: "low-power" }}
-        dpr={[1, 1.5]}
-      >
-        <ShaderPlane />
-      </Canvas>
+      {canRenderCanvas ? (
+        <CanvasErrorBoundary fallback={<FallbackBackground />}>
+          <Canvas
+            orthographic
+            camera={{ position: [0, 0, 1], zoom: 1 }}
+            gl={{ antialias: false, powerPreference: "low-power" }}
+            dpr={[1, 1.5]}
+          >
+            <ShaderPlane />
+          </Canvas>
+        </CanvasErrorBoundary>
+      ) : (
+        <FallbackBackground />
+      )}
     </div>
   );
 };

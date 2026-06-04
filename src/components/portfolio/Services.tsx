@@ -51,11 +51,10 @@ const Services = () => {
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray<HTMLElement>("[data-service-card]");
       gsap.from(cards, {
-        y: 80,
         opacity: 0,
-        duration: 0.9,
+        duration: 0.45,
         ease: "expo.out",
-        stagger: 0.08,
+        stagger: 0.04,
         scrollTrigger: {
           trigger: gridRef.current,
           start: "top 80%",
@@ -66,7 +65,7 @@ const Services = () => {
   }, []);
 
   return (
-    <section id="services" className="section-padding bg-card/70 backdrop-blur-md relative">
+    <section id="services" className="section-anchor section-padding bg-card/70 backdrop-blur-md relative">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="mb-16">
@@ -83,27 +82,44 @@ const Services = () => {
           </SplitReveal>
         </div>
 
-        {/* Services Grid */}
-        <div ref={gridRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
-            <div
-              key={service.title}
-              data-service-card
-              data-cursor="hover"
-              className="group p-8 bg-background border border-border rounded-lg hover-lift hover:border-muted-foreground/30 transition-all duration-300"
-            >
-              <service.icon
-                size={32}
-                className="text-muted-foreground mb-6 group-hover:text-foreground transition-colors duration-300"
-              />
-              <h3 className="font-display text-xl font-semibold text-foreground mb-3">
-                {service.title}
-              </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                {service.description}
-              </p>
-            </div>
-          ))}
+        {/* Capability Map */}
+        <div ref={gridRef} className="relative">
+          <div className="absolute left-6 top-0 hidden h-full w-px bg-border md:block" />
+          <div className="space-y-5">
+            {services.map((service, index) => (
+              <article
+                key={service.title}
+                data-service-card
+                data-cursor="hover"
+                className="group relative grid gap-5 border-b border-border/70 pb-6 transition-colors duration-300 last:border-b-0 md:grid-cols-[80px_minmax(0,0.9fr)_minmax(220px,0.55fr)] md:items-start md:gap-8 md:pl-0"
+              >
+                <div className="relative flex items-center gap-4 md:block">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full border border-border bg-background transition-colors duration-300 group-hover:border-muted-foreground/50 group-hover:bg-card">
+                    <service.icon
+                      size={22}
+                      className="text-muted-foreground transition-colors duration-300 group-hover:text-foreground"
+                    />
+                  </div>
+                  <span className="font-mono text-xs text-muted-foreground md:absolute md:left-0 md:top-16">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                </div>
+
+                <div className="min-w-0">
+                  <h3 className="font-display text-2xl md:text-3xl font-semibold text-foreground transition-colors duration-300 group-hover:text-muted-foreground">
+                    {service.title}
+                  </h3>
+                  <p className="mt-3 max-w-2xl text-sm md:text-base text-muted-foreground leading-relaxed">
+                    {service.description}
+                  </p>
+                </div>
+
+                <div className="hidden h-full items-center md:flex">
+                  <div className="h-px flex-1 bg-border/70 transition-colors duration-300 group-hover:bg-muted-foreground/40" />
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>

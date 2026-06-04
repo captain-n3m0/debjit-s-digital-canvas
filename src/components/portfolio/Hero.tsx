@@ -48,34 +48,37 @@ const Hero = () => {
     <section
       ref={sectionRef}
       id="home"
-      className="relative min-h-screen flex flex-col justify-center section-padding pt-32"
+      className="section-anchor relative min-h-screen flex flex-col justify-center section-padding pt-32"
     >
       <div className="max-w-7xl mx-auto w-full">
-        {/* Main Heading */}
         <div ref={headingRef} className="mb-12">
           <p className="text-muted-foreground text-xs uppercase tracking-[0.4em] mb-6">
             [ Kolkata / IN — Available 2026 ]
           </p>
-          <SplitReveal
-            as="h1"
-            type="chars"
-            stagger={0.018}
-            className="font-display text-[18vw] md:text-[14vw] lg:text-[12vw] font-bold text-foreground leading-[0.85] tracking-tight"
+          <h1
+            className="font-display text-5xl sm:text-6xl md:text-8xl lg:text-9xl xl:text-[9rem] 2xl:text-[10rem] font-bold leading-[0.9]"
+            aria-label="Debjit Naskar"
           >
-            DEBJIT
-          </SplitReveal>
-          <SplitReveal
-            as="h1"
-            type="chars"
-            stagger={0.018}
-            delay={0.1}
-            className="font-display text-[18vw] md:text-[14vw] lg:text-[12vw] font-bold text-muted-foreground/70 leading-[0.85] tracking-tight italic"
-          >
-            NASKAR.
-          </SplitReveal>
+            <SplitReveal
+              as="span"
+              type="chars"
+              stagger={0.018}
+              className="block text-foreground"
+            >
+              DEBJIT
+            </SplitReveal>
+            <SplitReveal
+              as="span"
+              type="chars"
+              stagger={0.018}
+              delay={0.1}
+              className="block text-muted-foreground/70 italic"
+            >
+              NASKAR.
+            </SplitReveal>
+          </h1>
         </div>
 
-        {/* Role & Description */}
         <div ref={subRef} className="grid md:grid-cols-2 gap-12 items-end mb-16">
           <div className="animate-fade-in" style={{ animationDelay: "0.3s" }}>
             <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
@@ -86,10 +89,12 @@ const Hero = () => {
             </p>
           </div>
 
-          {/* Stats */}
-          <div className="flex gap-12 md:justify-end animate-fade-in" style={{ animationDelay: "0.4s" }}>
+          <div
+            className="grid grid-cols-2 gap-4 sm:gap-8 md:flex md:gap-12 md:justify-end animate-fade-in"
+            style={{ animationDelay: "0.4s" }}
+          >
             {stats.map((stat) => (
-              <div key={stat.label} className="text-center md:text-right">
+              <div key={stat.label} className="min-w-0 text-left md:text-right">
                 <p className="font-display text-4xl md:text-5xl font-bold text-foreground">
                   {stat.value}
                 </p>

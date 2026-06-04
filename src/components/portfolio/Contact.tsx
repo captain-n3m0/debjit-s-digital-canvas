@@ -29,7 +29,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="section-padding bg-card/70 backdrop-blur-md relative">
+    <section id="contact" className="section-anchor section-padding bg-card/70 backdrop-blur-md relative">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="mb-16">
@@ -58,16 +58,18 @@ const Contact = () => {
                 href={item.href}
                 target={item.href.startsWith("http") ? "_blank" : undefined}
                 rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="group flex items-center justify-between p-6 bg-background border border-border rounded-lg hover:border-muted-foreground/30 transition-all duration-300 hover-lift animate-fade-in"
+                className="group flex items-start justify-between gap-4 p-5 sm:p-6 bg-background border border-border rounded-lg hover:border-muted-foreground/30 transition-all duration-300 hover-lift animate-fade-in"
                 style={{ animationDelay: `${0.3 + i * 0.05}s` }}
               >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center">
+                <div className="flex min-w-0 items-start gap-4">
+                  <div className="w-12 h-12 shrink-0 rounded-full bg-secondary flex items-center justify-center">
                     <item.icon size={20} className="text-muted-foreground" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-sm text-muted-foreground mb-1">{item.label}</p>
-                    <p className="font-display text-lg text-foreground break-all">{item.value}</p>
+                    <p className="font-display text-base sm:text-lg text-foreground break-words">
+                      {item.value}
+                    </p>
                   </div>
                 </div>
                 <ArrowUpRight

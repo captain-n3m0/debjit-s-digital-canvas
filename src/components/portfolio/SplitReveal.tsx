@@ -1,4 +1,4 @@
-import { useEffect, useRef, ElementType } from "react";
+import { useEffect, useRef, ElementType, Ref } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
@@ -56,7 +56,7 @@ const SplitReveal = ({
   }, [children, type, delay, stagger]);
 
   return (
-    <Tag ref={ref as any} className={className} style={{ overflow: "hidden" }}>
+    <Tag ref={ref as Ref<HTMLElement>} className={className} style={{ overflow: "hidden" }}>
       {children}
     </Tag>
   );

@@ -1,15 +1,29 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 
 const CustomCursor = () => {
+  const [enabled, setEnabled] = useState(false);
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (window.matchMedia("(pointer: coarse)").matches) return;
+    const pointerQuery = window.matchMedia("(pointer: fine)");
+    const syncPointer = () => setEnabled(pointerQuery.matches);
 
-    const dot = dotRef.current!;
-    const ring = ringRef.current!;
+    syncPointer();
+    pointerQuery.addEventListener("change", syncPointer);
+
+    return () => {
+      pointerQuery.removeEventListener("change", syncPointer);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!enabled) return;
+
+    const dot = dotRef.current;
+    const ring = ringRef.current;
+    if (!dot || !ring) return;
 
     const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
     const ringPos = { x: pos.x, y: pos.y };
@@ -47,13 +61,14 @@ const CustomCursor = () => {
       window.removeEventListener("mouseover", onOver);
       document.body.style.cursor = "";
     };
-  }, []);
+  }, [enabled]);
 
   return (
     <>
       <div
         ref={ringRef}
-        className="pointer-events-none fixed top-0 left-0 z-[100] hidden md:block"
+        aria-hidden="true"
+        className={`pointer-events-none fixed top-0 left-0 z-[100] ${enabled ? "block" : "hidden"}`}
         style={{
           width: 36,
           height: 36,
@@ -66,7 +81,8 @@ const CustomCursor = () => {
       />
       <div
         ref={dotRef}
-        className="pointer-events-none fixed top-0 left-0 z-[100] hidden md:block"
+        aria-hidden="true"
+        className={`pointer-events-none fixed top-0 left-0 z-[100] ${enabled ? "block" : "hidden"}`}
         style={{
           width: 6,
           height: 6,
