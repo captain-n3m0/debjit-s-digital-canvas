@@ -98,6 +98,11 @@
     overflow-wrap: anywhere;
   }
 
+  .custom-cursor-active,
+  .custom-cursor-active * {
+    cursor: none !important;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Syne', sans-serif;
     @apply font-bold tracking-normal;
