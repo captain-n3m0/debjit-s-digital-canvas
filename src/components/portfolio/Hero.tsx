@@ -86,7 +86,8 @@ const Hero = () => {
               Cybersecurity Engineer & Ethical Hacker focused on{" "}
               <span className="text-foreground">Application Security</span>,{" "}
               <span className="text-foreground">API Security</span>, and{" "}
-              <span className="text-foreground">Network Security</span>.
+              <span className="text-foreground">Network Security</span>. Also a{" "}
+              <span className="text-foreground">Fullstack Web Developer</span>.
             </p>
           </div>
 
