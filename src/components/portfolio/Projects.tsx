@@ -87,6 +87,16 @@ const Projects = () => {
       previewUrl: "https://velocity-atlier.techtubebydebjit.workers.dev/",
       number: "06",
     },
+    {
+      title: "Void Collective",
+      category: "Fullstack Web Development · Live Preview",
+      description:
+        "Built and deployed a live web project with public source code, production URL, and responsive preview.",
+      link: "https://void-collective.techtubebydebjit.workers.dev/",
+      sourceUrl: "https://github.com/captain-n3m0/void-collective",
+      previewUrl: "https://void-collective.techtubebydebjit.workers.dev/",
+      number: "07",
+    },
   ];
 
   const listRef = useRef<HTMLDivElement>(null);

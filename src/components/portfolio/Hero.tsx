@@ -11,7 +11,7 @@ const Hero = () => {
   const stats = [
     { value: "P2", label: "Bug Bounty (EPAM)" },
     { value: "4+", label: "HTB Pro Lab Certs" },
-    { value: "2", label: "Live Web Projects" },
+    { value: "3", label: "Live Web Projects" },
   ];
 
   const sectionRef = useRef<HTMLElement>(null);
