@@ -1,5 +1,12 @@
 const items = [
   "Application Security",
+  "Fullstack Web Development",
+  "React",
+  "TypeScript",
+  "Frontend Engineering",
+  "Backend APIs",
+  "Cloudflare Workers",
+  "Responsive UI",
   "API Penetration Testing",
   "OWASP Top 10",
   "Access Control",

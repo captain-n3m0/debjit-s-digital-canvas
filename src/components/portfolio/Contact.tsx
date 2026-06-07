@@ -45,8 +45,9 @@ const Contact = () => {
         <div className="grid gap-10 md:grid-cols-2 md:gap-12 items-start">
           <div className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
             <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-4">
-              Open to security research collaborations, bug bounty engagements, and
-              cybersecurity opportunities. Based in Kolkata, India.
+              Open to fullstack web development projects, security research
+              collaborations, bug bounty engagements, and cybersecurity
+              opportunities. Based in Kolkata, India.
             </p>
             <p className="text-sm text-muted-foreground">Kolkata, West Bengal, India</p>
           </div>

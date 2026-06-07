@@ -69,9 +69,9 @@ const Projects = () => {
     },
     {
       title: "Solene",
-      category: "GitHub · Live Web Preview",
+      category: "Fullstack Web Development · Live Preview",
       description:
-        "A deployed web project with public source code and a live Cloudflare Workers preview.",
+        "Built and deployed a live web project with public source code, production URL, and responsive preview.",
       link: "https://solene.techtubebydebjit.workers.dev/",
       sourceUrl: "https://github.com/captain-n3m0/Solene",
       previewUrl: "https://solene.techtubebydebjit.workers.dev/",
@@ -79,9 +79,9 @@ const Projects = () => {
     },
     {
       title: "Velocity Atlier",
-      category: "GitHub · Live Web Preview",
+      category: "Fullstack Web Development · Live Preview",
       description:
-        "A deployed web project with public source code and a live Cloudflare Workers preview.",
+        "Built and deployed a live web project with public source code, production URL, and responsive preview.",
       link: "https://velocity-atlier.techtubebydebjit.workers.dev/",
       sourceUrl: "https://github.com/captain-n3m0/velocity-atlier",
       previewUrl: "https://velocity-atlier.techtubebydebjit.workers.dev/",
@@ -151,7 +151,7 @@ const Projects = () => {
         {/* Section Header */}
         <div className="mb-12 sm:mb-16">
           <p className="text-muted-foreground text-sm uppercase tracking-widest mb-4 animate-fade-in">
-            Highlights
+            Selected Work
           </p>
           <SplitReveal
             as="h2"
@@ -159,7 +159,7 @@ const Projects = () => {
             stagger={0.08}
             className="section-heading"
           >
-            Achievements & Research
+            Projects, Achievements & Research
           </SplitReveal>
         </div>
 

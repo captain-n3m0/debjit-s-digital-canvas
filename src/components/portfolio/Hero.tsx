@@ -11,6 +11,7 @@ const Hero = () => {
   const stats = [
     { value: "P2", label: "Bug Bounty (EPAM)" },
     { value: "4+", label: "HTB Pro Lab Certs" },
+    { value: "2", label: "Live Web Projects" },
   ];
 
   const sectionRef = useRef<HTMLElement>(null);
@@ -93,7 +94,7 @@ const Hero = () => {
           </div>
 
           <div
-            className="grid grid-cols-2 gap-4 sm:gap-8 md:flex md:gap-12 md:justify-end animate-fade-in"
+            className="grid grid-cols-3 gap-4 sm:gap-8 md:flex md:gap-10 lg:gap-12 md:justify-end animate-fade-in"
             style={{ animationDelay: "0.4s" }}
           >
             {stats.map((stat) => (

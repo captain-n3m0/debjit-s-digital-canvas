@@ -1,4 +1,4 @@
-import { ShieldCheck, Bug, Network, Code2, FileSearch, Lock, BookOpen } from "lucide-react";
+import { ShieldCheck, Bug, Network, Code2, FileSearch, Lock, BookOpen, Globe2 } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -22,6 +22,11 @@ const Services = () => {
       icon: Network,
       title: "Network Security",
       description: "Reconnaissance, enumeration, and network-level vulnerability assessment using Nmap, Wireshark, and Burp Suite.",
+    },
+    {
+      icon: Globe2,
+      title: "Fullstack Web Development",
+      description: "Responsive web applications with clean interfaces, backend integrations, API flows, and deployment-ready implementation.",
     },
     {
       icon: Bug,
@@ -78,7 +83,7 @@ const Services = () => {
             stagger={0.08}
             className="section-heading"
           >
-            Services & Capabilities
+            Security & Fullstack Capabilities
           </SplitReveal>
         </div>
 
