@@ -83,11 +83,12 @@ const Hero = () => {
         <div ref={subRef} className="grid gap-8 sm:gap-10 md:grid-cols-2 md:gap-12 items-end mb-12 sm:mb-16">
           <div className="animate-fade-in" style={{ animationDelay: "0.3s" }}>
             <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground leading-relaxed">
-              Cybersecurity Engineer & Ethical Hacker focused on{" "}
+              Cybersecurity Engineer, Ethical Hacker, and{" "}
+              <span className="text-foreground">Fullstack Web Developer</span>{" "}
+              focused on{" "}
               <span className="text-foreground">Application Security</span>,{" "}
               <span className="text-foreground">API Security</span>, and{" "}
-              <span className="text-foreground">Network Security</span>. Also a{" "}
-              <span className="text-foreground">Fullstack Web Developer</span>.
+              <span className="text-foreground">Network Security</span>.
             </p>
           </div>
 
