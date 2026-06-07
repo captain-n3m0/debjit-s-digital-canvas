@@ -1,10 +1,21 @@
-import { ArrowUpRight, FileText } from "lucide-react";
+import { ArrowUpRight, Eye, FileText, Github } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitReveal from "./SplitReveal";
 
 gsap.registerPlugin(ScrollTrigger);
+
+type Project = {
+  title: string;
+  category: string;
+  description: string;
+  link: string;
+  number: string;
+  research?: boolean;
+  sourceUrl?: string;
+  previewUrl?: string;
+};
 
 const Projects = () => {
   const researchPaper = {
@@ -26,7 +37,7 @@ const Projects = () => {
     ],
   };
 
-  const projects = [
+  const projects: Project[] = [
     {
       title: "EPAM Systems Managed Bug Bounty",
       category: "P2 · $600 · Bugcrowd",
@@ -55,6 +66,26 @@ const Projects = () => {
       description: "Pro Lab certification covering practical network exploitation and post-exploitation techniques.",
       link: "https://www.hackthebox.com/",
       number: "04",
+    },
+    {
+      title: "Solene",
+      category: "GitHub · Live Web Preview",
+      description:
+        "A deployed web project with public source code and a live Cloudflare Workers preview.",
+      link: "https://solene.techtubebydebjit.workers.dev/",
+      sourceUrl: "https://github.com/captain-n3m0/Solene",
+      previewUrl: "https://solene.techtubebydebjit.workers.dev/",
+      number: "05",
+    },
+    {
+      title: "Velocity Atlier",
+      category: "GitHub · Live Web Preview",
+      description:
+        "A deployed web project with public source code and a live Cloudflare Workers preview.",
+      link: "https://velocity-atlier.techtubebydebjit.workers.dev/",
+      sourceUrl: "https://github.com/captain-n3m0/velocity-atlier",
+      previewUrl: "https://velocity-atlier.techtubebydebjit.workers.dev/",
+      number: "06",
     },
   ];
 
@@ -135,11 +166,8 @@ const Projects = () => {
         {/* Projects List */}
         <div ref={listRef} className="space-y-5 md:space-y-6 pb-24">
           {projects.map((project, index) => (
-            <a
+            <article
               key={project.title}
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
               data-project-row
               data-active={index === 0}
               data-cursor="hover"
@@ -149,7 +177,11 @@ const Projects = () => {
             >
               <div
                 data-project-content
-                className="flex flex-col md:flex-row md:items-start justify-between gap-5 md:gap-10"
+                className={`grid gap-5 md:items-start md:gap-8 ${
+                  project.previewUrl
+                    ? "md:grid-cols-[minmax(0,1fr)_minmax(220px,320px)_auto]"
+                    : "md:grid-cols-[minmax(0,1fr)_auto]"
+                }`}
               >
                 <div className="flex min-w-0 items-start gap-4 sm:gap-5 md:gap-12">
                   <span className="text-muted-foreground/90 text-sm font-mono group-data-[active=true]:text-foreground">
@@ -190,19 +222,57 @@ const Projects = () => {
                   </div>
                 </div>
 
-                <div className="flex shrink-0 items-center justify-between gap-5 pl-8 sm:pl-10 md:pl-0 md:pt-2 md:justify-end">
+                {project.previewUrl && (
+                  <div
+                    className="relative ml-8 h-40 overflow-hidden rounded-md border border-border bg-background/70 shadow-inner transition-colors duration-300 group-data-[active=true]:border-muted-foreground/40 sm:ml-10 md:ml-0 md:h-36"
+                  >
+                    <iframe
+                      src={project.previewUrl}
+                      title={`${project.title} live preview`}
+                      loading="lazy"
+                      tabIndex={-1}
+                      className="pointer-events-none h-full w-full border-0 bg-background"
+                    />
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 bg-background/90 px-3 py-2 text-[10px] uppercase tracking-widest text-muted-foreground backdrop-blur-sm transition-colors duration-300 group-data-[active=true]:text-foreground">
+                      <span className="truncate">
+                        {new URL(project.previewUrl).hostname}
+                      </span>
+                      <Eye size={14} className="shrink-0" />
+                    </div>
+                  </div>
+                )}
+
+                <div className="flex shrink-0 items-center justify-between gap-4 pl-8 sm:pl-10 md:flex-col md:items-end md:pl-0 md:pt-2">
                   <span className="hidden max-w-56 break-words md:block text-muted-foreground/85 text-sm text-right group-data-[active=true]:text-muted-foreground">
                     {project.research ? `DOI ${researchPaper.doi}` : project.category}
                   </span>
-                  <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center group-hover:bg-foreground group-hover:border-foreground group-data-[active=true]:border-muted-foreground/60 transition-all duration-300">
-                    <ArrowUpRight
-                      size={18}
-                      className="text-muted-foreground group-hover:text-background transition-colors duration-300"
-                    />
+                  <div className="flex items-center gap-2">
+                    {project.sourceUrl && (
+                      <a
+                        href={project.sourceUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Open GitHub repository for ${project.title}`}
+                        title={`Open GitHub repository for ${project.title}`}
+                        className="flex h-10 w-10 items-center justify-center rounded-full border border-border transition-all duration-300 hover:border-foreground hover:bg-foreground hover:text-background group-data-[active=true]:border-muted-foreground/60"
+                      >
+                        <Github size={18} className="text-current" />
+                      </a>
+                    )}
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Open ${project.previewUrl ? "live preview" : "project link"} for ${project.title}`}
+                      title={`Open ${project.previewUrl ? "live preview" : "project link"} for ${project.title}`}
+                      className="flex h-10 w-10 items-center justify-center rounded-full border border-border transition-all duration-300 hover:border-foreground hover:bg-foreground hover:text-background group-data-[active=true]:border-muted-foreground/60"
+                    >
+                      <ArrowUpRight size={18} className="text-current" />
+                    </a>
                   </div>
                 </div>
               </div>
-            </a>
+            </article>
           ))}
           <div className="border-t border-border" />
         </div>
