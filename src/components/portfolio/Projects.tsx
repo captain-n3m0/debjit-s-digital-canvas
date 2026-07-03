@@ -97,6 +97,15 @@ const Projects = () => {
       previewUrl: "https://void-collective.techtubebydebjit.workers.dev/",
       number: "07",
     },
+    {
+      title: "Porsche 911 GT3 RS",
+      category: "Frontend Motion Study - Live Preview",
+      description:
+        "Built a kinetic scroll-driven product experience with GSAP, Lenis, 300-frame rotation, and chapter-based storytelling for the 911 GT3 RS.",
+      link: "https://porsche-911-blue.vercel.app/",
+      previewUrl: "https://porsche-911-blue.vercel.app/",
+      number: "08",
+    },
   ];
 
   const listRef = useRef<HTMLDivElement>(null);
