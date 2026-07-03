@@ -103,6 +103,7 @@ const Projects = () => {
       description:
         "Built a kinetic scroll-driven product experience with GSAP, Lenis, 300-frame rotation, and chapter-based storytelling for the 911 GT3 RS.",
       link: "https://porsche-911-blue.vercel.app/",
+      sourceUrl: "https://github.com/captain-n3m0/porsche-911",
       previewUrl: "https://porsche-911-blue.vercel.app/",
       number: "08",
     },
